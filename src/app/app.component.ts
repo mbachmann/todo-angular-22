@@ -10,4 +10,7 @@ import { MyFirstComponent } from './my-first/my-first.component';
 })
 export class App {
   protected readonly title = signal('todo-angular');
+  title1 = 'From Variable 1';
+  title2 = 'From Variable 2';
+  title3 = 'From Variable 3';
 }
