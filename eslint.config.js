@@ -1,20 +1,23 @@
 // @ts-check
+// @ts-check
 const eslint = require('@eslint/js');
-const { defineConfig } = require('eslint/config');
 const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
-
-module.exports = defineConfig([
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+module.exports = tseslint.config(
   {
     files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,
-      tseslint.configs.recommended,
-      tseslint.configs.stylistic,
-      angular.configs.tsRecommended,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.stylistic,
+      ...angular.configs.tsRecommended,
+      eslintPluginPrettierRecommended,
     ],
+    ignores: ['src/app/openapi-gen/**'],
     processor: angular.processInlineTemplates,
     rules: {
+      '@angular-eslint/prefer-standalone': ['off'],
       '@angular-eslint/directive-selector': [
         'error',
         {
@@ -31,11 +34,18 @@ module.exports = defineConfig([
           style: 'kebab-case',
         },
       ],
+      '@typescript-eslint/no-explicit-any': ['off'],
     },
   },
   {
     files: ['**/*.html'],
-    extends: [angular.configs.templateRecommended, angular.configs.templateAccessibility],
-    rules: {},
-  },
-]);
+    extends: [
+      ...angular.configs.templateRecommended,
+      ...angular.configs.templateAccessibility,
+      eslintPluginPrettierRecommended,
+    ],
+    rules: {
+      // "@angular-eslint/template/interactive-supports-focus":["off"]
+    },
+  }
+);
