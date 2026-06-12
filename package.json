@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "prettier:write": "prettier --config .prettierrc.json --write .",
+    "prettier:check": "prettier --config .prettierrc.json --check ."
   },
   "private": true,
   "packageManager": "npm@11.16.0",
@@ -24,7 +27,10 @@
     "@angular/build": "^22.0.1",
     "@angular/cli": "^22.0.1",
     "@angular/compiler-cli": "^22.0.0",
+    "@eslint/js": "^10.0.1",
     "@types/jasmine": "~6.0.0",
+    "angular-eslint": "22.0.0",
+    "eslint": "^10.3.0",
     "istanbul-lib-instrument": "^6.0.3",
     "jasmine-core": "~6.2.0",
     "karma": "~6.4.0",
@@ -33,6 +39,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.2.0",
     "prettier": "^3.8.1",
-    "typescript": "~6.0.2"
+    "typescript": "~6.0.2",
+    "typescript-eslint": "8.60.1"
   }
 }
